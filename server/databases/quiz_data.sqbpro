@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="quiz_data.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2641"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="questions" custom_title="0" dock_id="1" table="4,9:mainquestions"/><table title="riddles" custom_title="0" dock_id="3" table="4,7:mainriddles"/><table title="riddles" custom_title="0" dock_id="4" table="4,7:mainriddles"/><dock_state state="000000ff00000000fd00000001000000020000024900000213fc0100000001fc00000000000002490000011e00fffffffa000000020100000004fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011800fffffffb000000160064006f0063006b00420072006f00770073006500320000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500330100000000ffffffff0000011800fffffffb000000160064006f0063006b00420072006f00770073006500340100000000ffffffff0000011e00ffffff000002490000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="questions" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths/><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="riddles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="70"/><column index="3" value="83"/><column index="4" value="70"/><column index="5" value="70"/><column index="6" value="91"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sqlite_sequence" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="78"/><column index="2" value="31"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">-- Table des devinettes (pour manche 3)
+CREATE TABLE IF NOT EXISTS riddles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    riddle_text TEXT NOT NULL,
+    correct_word TEXT NOT NULL,
+    hint_level1 TEXT NOT NULL,
+    hint_level2 TEXT NOT NULL,
+    difficulty_level INTEGER DEFAULT 3
+);
+
+-- Insertion de 20 devinettes avec indices (apostrophes échappées)
+INSERT INTO riddles (riddle_text, correct_word, hint_level1, hint_level2, difficulty_level) VALUES
+('Je parle sans bouche et j''entends sans oreilles. Je n''ai pas de corps, mais je vis avec le vent. Que suis-je ?', 'ECHO', 'C''est un phénomène acoustique', 'On l''entend souvent dans les montagnes', 3),
+('Plus on en prend, plus on en laisse. Qu''est-ce que c''est ?', 'PAS', 'C''est une trace qu''on laisse', 'On les fait en marchant', 3),
+('Je suis toujours devant toi, mais tu ne peux jamais me voir. Que suis-je ?', 'AVENIR', 'C''est temporel', 'Il est devant nous tous', 3),
+('Qu''est-ce qui peut traverser une vitre sans la briser ?', 'LUMIERE', 'C''est immatériel', 'Elle nous permet de voir', 3),
+('Plus elle est grande, moins on la voit. Qu''est-ce que c''est ?', 'OBSCURITE', 'Son opposé est la lumière', 'Elle règne la nuit', 3),
+('Qu''est-ce qui a des villes, mais pas de maisons ; des forêts, mais pas d''arbres ; des rivières, mais pas d''eau ?', 'CARTE', 'On l''utilise pour se repérer', 'Les géographes la dessinent', 3),
+('Je suis un gardien silencieux, je montre le chemin sans jamais parler. Qui suis-je ?', 'PANEAU', 'On le trouve sur les routes', 'Il donne des indications', 3),
+('On me jette quand on a besoin de moi, on me reprend quand on n''en a plus besoin. Que suis-je ?', 'ANCRE', 'C''est marin', 'Elle retient les bateaux', 3),
+('Qu''est-ce qui a une tête, une queue, mais pas de corps ?', 'PIECE', 'C''est monétaire', 'On la lance en l''air', 3),
+('Je suis léger comme une plume, mais même l''homme le plus fort ne peut me tenir plus de 5 minutes. Que suis-je ?', 'SOUFFLE', 'C''est éphémère', 'On en a besoin pour vivre', 3),
+('Plus on le partage, plus il grandit. Qu''est-ce que c''est ?', 'SECRET', 'On le chuchote à l''oreille', 'Il ne doit pas être révélé', 3),
+('Je peux être brisé sans être tenu. Que suis-je ?', 'PROMESSE', 'C''est une parole donnée', 'Il ne faut pas la rompre', 3),
+('Qu''est-ce qui a des aiguilles mais ne coud pas, a des chiffres mais ne compte pas ?', 'HORLOGE', 'Elle donne l''heure', 'On la regarde souvent', 3),
+('Je suis plein de trous mais je retiens l''eau. Que suis-je ?', 'EPONGE', 'On l''utilise pour nettoyer', 'Elle absorbe les liquides', 3),
+('Plus on enlève, plus il grandit. Qu''est-ce que c''est ?', 'TROU', 'C''est un vide', 'On le creuse', 3),
+('Qu''est-ce qui appartient à toi, mais que les autres utilisent plus que toi ?', 'NOM', 'On te l''a donné à la naissance', 'Les gens t''appellent par lui', 3),
+('Je commence la nuit et termine le matin, mais je me trouve dans l''éclat du jour. Que suis-je ?', 'LETTRE_N', 'C''est une lettre de l''alphabet', 'Regarde les premières lettres des mots', 3),
+('Qu''est-ce qui monte et descend sans bouger ?', 'ESCALIER', 'Il permet de changer d''étage', 'On le monte marche par marche', 3),
+('J''ai des branches mais pas de feuilles, pas de tronc et pas de fruits. Que suis-je ?', 'BANQUE', 'C''est financier', 'On y dépose de l''argent', 3),
+('Plus on le regarde, moins on le voit. Qu''est-ce que c''est ?', 'NOIR', 'C''est une absence de lumière', 'C''est la couleur de la nuit', 3);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
